@@ -444,7 +444,6 @@
 
 
 // 茶园--迎龙
-// 四海线
 #define CAIYUAN_5_IMSI				"460043789100192"
 #define CAIYUAN_5_P33				(-1.482)
 #define CAIYUAN_5_P34				(-0.87)
@@ -476,5 +475,33 @@
 #define CAIYUAN_426_P36				(-0.477)
 #define CAIYUAN_426_P37	 			(7.63)
 #define CAIYUAN_426_P38 			(-0.899)
+
+// 演示线
+// 106.50445,29.281888
+#define YANSHI_1_IMSI				"460050313212395"
+#define YANSHI_1_P33				(-1.482)
+#define YANSHI_1_P34				(-0.87)
+#define YANSHI_1_P35				(17.284)
+#define YANSHI_1_P36				(-0.483)
+#define YANSHI_1_P37	 			(7.49)
+#define YANSHI_1_P38 				(-1.087)
+
+// 106.509988,29.285417
+#define YANSHI_2_IMSI				"460050313212396"
+#define YANSHI_2_P33				(-1.482)
+#define YANSHI_2_P34				(-0.87)
+#define YANSHI_2_P35				(17.284)
+#define YANSHI_2_P36				(-0.483)
+#define YANSHI_2_P37	 			(7.49)
+#define YANSHI_2_P38 				(-1.087)
+
+// 106.514655,29.287752
+#define YANSHI_3_IMSI				"460050313212397"
+#define YANSHI_3_P33				(-1.482)
+#define YANSHI_3_P34				(-0.87)
+#define YANSHI_3_P35				(17.284)
+#define YANSHI_3_P36				(-0.483)
+#define YANSHI_3_P37	 			(7.49)
+#define YANSHI_3_P38 				(-1.087)
 
 #endif /* __GLOBAL_H */

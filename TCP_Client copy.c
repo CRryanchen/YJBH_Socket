@@ -7,7 +7,7 @@
 
 #define PORT       5400	                  		/*!< 端口 */                 
 #define IP_ADDRESS "118.24.246.188" 		/*!< 服务器IP地址 */            
-#define QZDZ		                      		/*!< 这个宏用于区分强制电流还是牺牲阳极类型 */
+// #define QZDL		                      		/*!< 这个宏用于区分强制电流还是牺牲阳极类型 */
 
 
 void  QZDL_Data         (char * imsi, float p34,     float p36, float p37, float p8);
@@ -27,7 +27,6 @@ unsigned char DataBuf[50];
 void SendDataToServer(SOCKET sock_fd)
 {
 #if defined QZDL
-
 	printf("正在发送白梓线 —— 3号桩：\n");
 	QZDL_Data(BAIZI_3_IMSI, BAIZI_3_P34, BAIZI_3_P36, BAIZI_3_P37, BAIZI_3_P38);
 	send(sock_fd, DataBuf, 38, 0);
@@ -423,6 +422,23 @@ void SendDataToServer(SOCKET sock_fd)
 	printf("正在发送茶园迎龙线 —— 426号桩发送成功。\n");
 	sleep(15);
 
+	printf("正在发送实验线 —— 1号桩：\n");
+	XSYJ_Data(YANSHI_1_IMSI, YANSHI_1_P33, YANSHI_1_P34, YANSHI_1_P35, YANSHI_1_P36, YANSHI_1_P37, YANSHI_1_P38);
+	send(sock_fd, DataBuf, 50, 0);
+	printf("实验线 —— 1号桩发送成功。\n");
+	sleep(13);
+
+	printf("正在发送实验线 —— 2号桩：\n");
+	XSYJ_Data(YANSHI_2_IMSI, YANSHI_2_P33, YANSHI_2_P34, YANSHI_2_P35, YANSHI_2_P36, YANSHI_2_P37, YANSHI_2_P38);
+	send(sock_fd, DataBuf, 50, 0);
+	printf("实验线 —— 2号桩发送成功。\n");
+	sleep(33);
+
+	printf("正在发送实验线 —— 3号桩：\n");
+	XSYJ_Data(YANSHI_3_IMSI, YANSHI_3_P33, YANSHI_3_P34, YANSHI_3_P35, YANSHI_3_P36, YANSHI_3_P37, YANSHI_3_P38);
+	send(sock_fd, DataBuf, 50, 0);
+	printf("实验线 —— 3号桩发送成功。\n");
+	sleep(20);
 #endif                                    /* QZDL */
 }
 
