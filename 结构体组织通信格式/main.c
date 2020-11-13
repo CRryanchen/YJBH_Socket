@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
-// #pragma pack(1)
+#include <stdlib.h>
+#pragma pack(1)
+#define OLD_METHOD
+// 水质仪数据
 
 /**
  * @brief 设备类型
@@ -43,6 +46,19 @@ struct yjbh
     // 参数
     struct _params params[2];
 }YJBH;
+
+
+struct OLD_SZY
+{
+    // 字节总数
+    unsigned char m_totalByes[2];
+    // 手机号
+    unsigned char m_phoneNum[5];
+    // 系统工位号
+    unsigned char systemNum[2];
+    // 参数
+    struct _params m_params[4];
+};
 
 union _floatConv
 {
@@ -110,11 +126,11 @@ void IMSItoCharBUf(const char * imsi, unsigned char * startAddr)
     resultBuf[7] = temp4 % 256;
 
 #else
-    temp = atoi(imsi);
+    temp = atoll(imsi);
 
     for (int i = 0; i < 8; i++)
     {
-        resultBuf[7 - i] = (temp / (unsigned int)pow(100, i)) % 100;
+        resultBuf[7 - i] = (temp / (unsigned long long)pow(100, i)) % 100;
     }
     // resultBuf[7] = (temp / 1) % 100;
     // resultBuf[6] = (temp / 100) % 100;
