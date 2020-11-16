@@ -504,4 +504,11 @@
 #define YANSHI_3_P37	 			(7.49)
 #define YANSHI_3_P38 				(-1.087)
 
+
+struct YjbhProtocol
+{
+    char m_char[16];
+
+};
+
 #endif /* __GLOBAL_H */

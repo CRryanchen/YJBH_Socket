@@ -13,17 +13,19 @@ unsigned char oldProtocolDataBuf[] = {0x00, 0x23,
                                       0x11, 0x40, 0xF5, 0x33, 0x74, 0x00,
                                       0x14, 0x0C};
 
-// int main(int argc, char * argv[])
-// {
-//     struct NewProtocol szyNewProtocol;
-//     struct OldProtocol szyOldProtocol;
+unsigned char oldProtocolDataBuf1[] = {0x00,0x23,0x00,0x00,0x00,0x00,0x00,0x00,0x61,0x07,0x3F,0x95,0xDC,0x61,0x00,0x09,0x3E,0x72,0xB0,0x22,0x00,0x0A,0x41,0x95,0x00,0x00,0x00,0x11,0x41,0x04,0xF6,0xF4,0x00,0xCA,0xEA};
 
-//     szyOldProtocol = *(struct OldProtocol *)oldProtocolDataBuf;
-//     oldCopyToNewProtocol(&szyNewProtocol, &szyOldProtocol);
+int main(int argc, char * argv[])
+{
+    struct NewProtocol szyNewProtocol;
+    struct OldProtocol szyOldProtocol;
 
-//     myPrint((unsigned char *)&szyNewProtocol, sizeof(szyNewProtocol));
-//     return 0;
-// }
+    szyOldProtocol = *(struct OldProtocol *)oldProtocolDataBuf1;
+    oldCopyToNewProtocol(&szyNewProtocol, &szyOldProtocol);
+
+    myPrint((unsigned char *)&szyNewProtocol, sizeof(szyNewProtocol));
+    return 0;
+}
 
 /**
  * @brief  short类型数据高低字节调换
@@ -120,11 +122,12 @@ void oldCopyToNewProtocol(struct NewProtocol * szyNewProtocolDes, struct OldProt
     struct OldProtocol szyOldProtocol = *szyOldProtocolSrc;
 
     // 总字节数
-    szyNewProtocol.m_totalBytes = EndianShort(szyOldProtocol.m_totalbytes.m_shortValue);
+    szyNewProtocol.m_totalBytes = EndianShort(szyOldProtocol.m_totalbytes.m_shortValue) + 3;
     // 设备类型
     szyNewProtocol.m_deviceType = SZY;
     // IMSI码 -- 自己创建的虚拟的在网站上用于唯一识别的
-    IMSItoCharBuf("460040313212380", szyNewProtocol.m_deviceCardNum);
+    // IMSItoCharBuf("460040313212380", szyNewProtocol.m_deviceCardNum);
+    IMSItoCharBuf("460014402829247", szyNewProtocol.m_deviceCardNum);
     // 系统工位号
     szyNewProtocol.m_systemNum[0] = szyOldProtocol.m_systemNum[0];
     szyNewProtocol.m_systemNum[1] = szyOldProtocol.m_systemNum[1];
